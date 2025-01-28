@@ -80,8 +80,8 @@ Stage 'Deploy - Run Flask Project' no Jenkinsfile
 Stage 'POST to Flask API' no Jenkinsfile 
 
 ## **Principais dificuldades**  
-**1. Funcionamento do container da aplicação Flask**  
-- Outro erro obtido foi a incapacidade do Jenkins se conectar com a aplicação Flask para realizar a requisição, tentei resolver colocando os containers na mesma rede da seguinte maneira:
+**1. Conexão com o container da aplicação Flask**  
+- O erro ocorreu devido à incapacidade do Jenkins de se conectar à aplicação Flask para realizar a requisição. Para tentar resolver, configurei os containers para que utilizassem a mesma rede da seguinte forma:
     - Adicionando no docker-compose do repositório clonado e do Jenkins:
         ```
             networks:
