@@ -94,7 +94,7 @@ Stage 'POST to Flask API' no Jenkinsfile
 **2. Funcionamento do container da aplicação Flask**
 - Obtive o erro "Could not import 'app'" nos logs do container do Flask, tentei resolver das seguintes maneiras:
     - Testar se o container exibia esse erro executando localmente, não exibia
-    - Mudar o comando de execução de ```CMD ["flask", "run", "--host=0.0.0.0"]``` para ``` CMD ["sh", "-c", "flask run --host=0.0.0.0"]``` no Dockerfile
+    - Mudar o comando de execução para ```CMD ["flask", "run", "--host=0.0.0.0"]```, ``` CMD ["sh", "-c", "flask run --host=0.0.0.0"]``` e ```CMD ["python", "app.py"]``` no Dockerfile
     - Criar um novo repositório (para não interferir na demanda 1) e explorar diferentes estruturas de pastas para aplicação 
         - As estruturas testadas podem ser vistas nos commits do [repositório criado](https://github.com/anycarolinys/flask_api_for_jenkins.git)  
     - As tentativas não foram eficazes e o erro persiste no pipeline 
