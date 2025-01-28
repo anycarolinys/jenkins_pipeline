@@ -4,13 +4,19 @@ pipeline {
     stages {
         stage('Clone GitHub Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/anycarolinys/dockerized_flask_api.git'
+                git branch: 'main', url: 'https://github.com/anycarolinys/flask_api_for_jenkins.git'
             }
         }
 
         stage('List Files') {
             steps {
                 sh 'ls -la'
+            }
+        }
+        
+        stage('Checking Linux distro') {
+            steps {
+                sh 'cat /etc/os-release'
             }
         }
 
@@ -74,26 +80,10 @@ pipeline {
             }
         }
 
-        stage('Docker build .') {
-            steps {
-                sh '''
-                    docker build .
-                '''
-            }
-        }
-
-        stage('Deploy - Run Mysql Container') {
-            steps {
-                sh '''
-                    $DOCKER_CONFIG/cli-plugins/docker-compose up -d db
-                '''
-            }
-        }
-
         stage('Deploy - Run Flask Project') {
             steps {
                 sh '''
-                    $DOCKER_CONFIG/cli-plugins/docker-compose up -d flask_api
+                    $DOCKER_CONFIG/cli-plugins/docker-compose up --build -d
                 '''
             }
         }
@@ -107,15 +97,7 @@ pipeline {
             }
         }
         
-        stage('Delay Before Command') {
-            steps {
-                script {
-                    sleep(time: 30, unit: 'SECONDS')
-                }
-            }
-        }
-        
-        stage('Docker logs') {
+        stage('Docker logs for flask_api') {
             steps {
                 sh '''
                     docker logs flask_api
@@ -135,10 +117,10 @@ pipeline {
             }
         }
         
-        stage('Docker ps 2') {
+        stage('Docker logs for flask_api after request') {
             steps {
                 sh '''
-                    docker ps
+                    docker logs flask_api
                 '''
             }
         }

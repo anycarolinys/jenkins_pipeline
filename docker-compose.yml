@@ -1,16 +1,3 @@
-# services:
-#   jenkins:
-#     image: jenkins/jenkins:latest
-#     ports:
-#       - '8082:8080'
-#     volumes:
-#       - 'jenkins_home:/var/jenkins_home'
-#       - '/var/run/docker.sock:/var/run/docker.sock'
-
-# volumes:
-#   jenkins_home:
-#     driver: local
-
 services:
   jenkins:
     image: jenkins/jenkins:latest
@@ -23,9 +10,13 @@ services:
     environment:
       - JENKINS_USER=root
       - JENKINS_PASSWORD=root_password  
+    networks:
+      - my_network
 
 volumes:
   jenkins_home:
     driver: local
 
-
+networks:
+  my_network:
+    driver: bridge
