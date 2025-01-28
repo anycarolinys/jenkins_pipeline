@@ -101,7 +101,7 @@ Stage 'POST to Flask API' no Jenkinsfile
 
 
 ## **O que poderia ter sido melhorado/realizado com mais tempo**  
-- Os erro da aplicação Flask poderia ser corrigido ><
+- O erro da aplicação Flask poderia ser corrigido ><
 - Poderia ser criada outra aplicação para que se pudesse executar um comando dentro do container
 
 ## **Principais aprendizados**
