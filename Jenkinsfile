@@ -22,9 +22,10 @@ pipeline {
         
         stage('Checking Linux distro') {
             steps {
-                sh 'sudo apt-get update -y && sudo apt-get upgrade -y
-                    sudo apt install docker.io -y
-                    sudo apt install docker-compose-v2 -y'
+                sh '''sudo apt-get update -y && sudo apt-get upgrade -y
+                sudo apt install docker.io -y
+                sudo apt install docker-compose-v2 -y
+                '''
             }
         }
 
