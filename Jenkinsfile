@@ -99,7 +99,7 @@ pipeline {
         stage('Install venv') {
             steps {
                 sh '''
-                    apt install python3.11-venv
+                    apt install python3.11-venv -y
                 '''
             }
         }
