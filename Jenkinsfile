@@ -88,10 +88,18 @@ pipeline {
             }
         }
 
+        // stage('Deploy - Run Flask Project') {
+        //     steps {
+        //         sh '''
+        //             $DOCKER_CONFIG/cli-plugins/docker-compose up --build -d
+        //         '''
+        //     }
+        // }
+
         stage('Deploy - Run Flask Project') {
             steps {
                 sh '''
-                    $DOCKER_CONFIG/cli-plugins/docker-compose up --build -d
+                    docker compose up --build -d
                 '''
             }
         }
