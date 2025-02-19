@@ -20,7 +20,7 @@ pipeline {
             }
         }
         
-        stage('Checking Linux distro') {
+        stage('Install Docker and Docker Compose') {
             steps {
                 sh '''sudo apt-get update -y && sudo apt-get upgrade -y
                 sudo apt install docker.io -y
