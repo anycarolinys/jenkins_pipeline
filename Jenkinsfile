@@ -99,7 +99,7 @@ pipeline {
         stage('Deploy - Run Flask Project') {
             steps {
                 sh '''
-                    docker compose up -d
+                    docker-compose up -d
                 '''
             }
         }
