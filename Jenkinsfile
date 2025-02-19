@@ -96,6 +96,14 @@ pipeline {
         //     }
         // }
 
+        stage('Install venv') {
+            steps {
+                sh '''
+                    apt install python3.11-venv
+                '''
+            }
+        }
+
         stage('Create virtual environment') {
             steps {
                 sh '''
