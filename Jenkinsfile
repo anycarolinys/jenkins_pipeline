@@ -96,6 +96,15 @@ pipeline {
         //     }
         // }
 
+        stage('Create virtual environment') {
+            steps {
+                sh '''
+                    python -m venv venv
+                    source venv/bin/activate
+                '''
+            }
+        }
+
         stage('Deploy - Run Flask Project') {
             steps {
                 sh '''
@@ -103,7 +112,6 @@ pipeline {
                 '''
             }
         }
-
 
         stage('Docker ps') {
             steps {
